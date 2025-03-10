@@ -24,6 +24,13 @@ class Role(Base):
     def locations(self):
         return[audition.location for audition in self.auditions]
     
+    #returning the first actor who was hired for the role or a message if none
+    def lead(self):
+        hired_auditions = [audition for audition in self.auditions if audition.hired]
+        if hired_auditions:
+            return hired_auditions[0].actor
+        return "No actor has been hired for understudy for this role"
+
 
 
 
