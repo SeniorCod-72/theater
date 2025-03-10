@@ -31,6 +31,12 @@ class Role(Base):
             return hired_auditions[0].actor
         return "No actor has been hired for understudy for this role"
 
+    #returning the second hired actor
+    def understudy(self):
+        hired_auditions = [audition for audition in self.auditions if audition.hired]
+        if len(hired_auditions) > 1:
+            return hired_auditions[1].actor
+        return "No actor has been hired for understudy for this role"
 
 
 
