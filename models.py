@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String,Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String,Boolean, ForeignKey, create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import relationship
+from sqlalchemy.orm import sessionmaker
 
 
 
@@ -40,6 +41,14 @@ class Role(Base):
 
 
 
+    engine = create_engine('sqlite:///theater.db')
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    
+    
+
+
+
 
 
 class Audition(Base):
@@ -50,6 +59,7 @@ class Audition(Base):
     location = Column(String)
     phone = Column(Integer)
     hired = Column(Boolean)
+    role_id = Column(Integer,ForeignKey('roles.id'))
 
 
     #relationship wit Role; Each audition is related to one role
@@ -58,3 +68,7 @@ class Audition(Base):
     #updating the hired status to true when an actor is hired for a Role
     def call_back(self):
         self.hired = True
+
+    
+    engine = create_engine('sqlite:///theater.db')
+    Session = sessionmaker(bind=engine)
