@@ -58,6 +58,6 @@ class Audition(Base):
     def call_back(self):
         self.hired = True
 
-    engine = create_engine('sqlite:///theater.db')
-    Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
+engine = create_engine('sqlite:///theater.db')
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
