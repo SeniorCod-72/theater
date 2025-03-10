@@ -27,6 +27,10 @@ class Audition(Base):
     phone = Column(Integer)
     hired = Column(Boolean)
 
-    
+
     #relationship wit Role; Each audition is related to one role
     role = relationship('Role', back_populates='auditions')
+
+    #updating the hired status to true when an actor is hired for a Role
+    def call_back(self):
+        self.hired = True
