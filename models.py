@@ -19,6 +19,11 @@ class Role(Base):
     #method to return list of actor name for this role
     def actors(self):
         return[audition.actor for audition in self.auditions]
+    
+    #method to return list of auditon locations for this role
+    def locations(self):
+        return[audition.location for audition in self.auditions]
+    
 
 
 
