@@ -40,17 +40,6 @@ class Role(Base):
         return "No actor has been hired for understudy for this role"
 
 
-
-    engine = create_engine('sqlite:///theater.db')
-    Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
-    
-    
-
-
-
-
-
 class Audition(Base):
     __tablename__ = 'auditions'
 
@@ -69,6 +58,6 @@ class Audition(Base):
     def call_back(self):
         self.hired = True
 
-    
     engine = create_engine('sqlite:///theater.db')
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
