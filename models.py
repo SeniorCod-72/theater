@@ -16,6 +16,12 @@ class Role(Base):
     #Relationship with Audition; one role can have many auditions
     auditions = relationship('Audition', back_populates='role')
 
+    #method to return list of actor name for this role
+    def actors(self):
+        return[audition.actor for audition in self.auditions]
+
+
+
 
 
 class Audition(Base):
