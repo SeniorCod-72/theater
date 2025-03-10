@@ -1,5 +1,7 @@
 from sqlalchemy import Column, Integer, String,Boolean, ForeignKey
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import relationship
+
 
 
 
@@ -11,6 +13,8 @@ class Role(Base):
 
     id = Column(Integer, primary_key=True)
     character_name = Column(String)
+    #Relationship with Audition; one role can have many auditions
+    auditions = relationship('Audition', back_populates='role')
 
 
 
@@ -22,4 +26,7 @@ class Audition(Base):
     location = Column(String)
     phone = Column(Integer)
     hired = Column(Boolean)
+
     
+    #relationship wit Role; Each audition is related to one role
+    role = relationship('Role', back_populates='auditions')
