@@ -45,3 +45,5 @@ This project uses SQLite for the database, and the database file is named `theat
 ```python
 engine = create_engine('sqlite:///theater.db')
 Base.metadata.create_all(engine)
+
+
